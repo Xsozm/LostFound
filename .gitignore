@@ -1,6 +1,2 @@
-.env
-config.json
-code-report/
+node_modules/
 
-# node
-node_modules
