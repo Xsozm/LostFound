@@ -1,4 +1,5 @@
 # LostFound
-# To start the server :  npm start
+# install dependences npm install
+# To start running the server :  npm start
 
 
