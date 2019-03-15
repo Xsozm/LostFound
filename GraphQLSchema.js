@@ -1,5 +1,5 @@
 import {
-    buildSchema
+    buildSchema,GraphQLObjectType,GraphQLSchema
 } from 'graphql';
 
 export const schema = buildSchema(`

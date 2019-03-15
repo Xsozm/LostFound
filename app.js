@@ -7,12 +7,17 @@
 
  const app = express();
 
- app.use('/graphql', graphqlHTTP({
+ app.use('/backend', graphqlHTTP({
      schema: ourSchema,
      rootValue: root,
      graphiql: true
  }));
 
- app.listen(4000, () => {
-     console.log('listening to port 4000')
+
+
+ app.listen(8080, (error) => {
+     if (error)
+         console.log(error);
+     else
+         console.log('listening to port 8080')
  });
