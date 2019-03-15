@@ -1,4 +1,4 @@
 # LostFound
-**To start the server
+# To start the server
 
-npm start
+# npm start
