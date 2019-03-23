@@ -16,8 +16,5 @@
 
 
  app.listen(8080, (error) => {
-     if (error)
-         console.log(error);
-     else
-         console.log('listening to port 8080')
+     console.log('listening to port 8080')
  });
