@@ -1,20 +1,20 @@
- import {
-     schema as ourSchema,
-     root
- } from './GraphQLSchema';
- import express from 'express';
- import graphqlHTTP from 'express-graphql';
+import { config } from "dotenv";
+import { schema as ourSchema, root } from "./GraphQLSchema";
 
- const app = express();
+import express from "express";
+import graphqlHTTP from "express-graphql";
+import { symlinkSync } from "fs";
+config();
+const app = express();
+app.use(
+  "/backend",
+  graphqlHTTP({
+    schema: ourSchema,
+    rootValue: root,
+    graphiql: true
+  })
+);
 
- app.use('/backend', graphqlHTTP({
-     schema: ourSchema,
-     rootValue: root,
-     graphiql: true
- }));
-
-
-
- app.listen(8080, (error) => {
-     console.log('listening to port 8080')
- });
+app.listen(8080, error => {
+  console.log("listening to port 8080");
+});

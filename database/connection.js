@@ -1,4 +1,4 @@
-import knex from "knex" ;
+import knex from "knex";
 
 const database = knex({
   client: "pg", // pg is the database library for postgreSQL on knexjs

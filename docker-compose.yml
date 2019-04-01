@@ -1,0 +1,21 @@
+version: "3"
+services:
+  app:
+    container_name: docker-node-mysql
+    restart: always
+    build: .
+    links:
+      - mysql
+    ports:
+      - "8080:8080"
+
+  mysql:
+    build:
+      context: ./mysql
+      args:
+        - MYSQL_DATABASE=lostandfound
+        - MYSQL_USER=hazem
+        - MYSQL_PASSWORD=hazem
+        - MYSQL_ROOT_PASSWORD=hazem
+    expose:
+      - "3306"
