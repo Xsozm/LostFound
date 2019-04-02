@@ -15,6 +15,6 @@ app.use(
   })
 );
 
-app.listen(8080, error => {
-  console.log("listening to port 8080");
+app.listen(3000, error => {
+  console.log("listening to port 3000");
 });
