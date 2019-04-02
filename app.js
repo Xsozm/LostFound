@@ -3,7 +3,6 @@ import { schema as ourSchema, root } from "./GraphQLSchema";
 
 import express from "express";
 import graphqlHTTP from "express-graphql";
-import { symlinkSync } from "fs";
 config();
 const app = express();
 app.use(

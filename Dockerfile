@@ -1,5 +1,7 @@
 FROM node:10.10.0
 
+RUN mkdir -p /usr/src/app
+
 # Create app directory
 WORKDIR /usr/src/app
 

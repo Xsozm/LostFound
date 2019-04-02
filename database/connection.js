@@ -1,12 +1,12 @@
 import knex from "knex";
 
 const database = knex({
-  client: "pg", // pg is the database library for postgreSQL on knexjs
+  client: "mysql",
   connection: {
-    host: "127.0.0.1", // Your local host IP
-    user: "postgres", // Your postgres user name
-    password: "your_password", // Your postrgres user password
-    database: "simple_api" // Your database name
+    host: mysql,
+    user: "hazem",
+    password: "hazem",
+    database: "lostandfound"
   }
 });
 
