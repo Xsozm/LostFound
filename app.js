@@ -1,10 +1,14 @@
 import { config } from "dotenv";
 import { schema as ourSchema, root } from "./GraphQLSchema";
+import Sequelize from "sequelize";
 
 import express from "express";
 import graphqlHTTP from "express-graphql";
 config();
 const app = express();
+
+const PORT = process.env.PORT || 8080;
+
 app.use(
   "/backend",
   graphqlHTTP({
@@ -14,10 +18,34 @@ app.use(
   })
 );
 
-app.listen(8080, error => {
+app.listen(PORT, error => {
   if (error) {
     console.log(error);
   } else {
-    console.log("listening to port 8080");
+    console.log(`listening to port ${PORT}`);
   }
 });
+
+/**Sequelize will keep the connection open by default,
+ * and use the same connection for all queries. If you need to close the connection,
+ *  call sequelize.close() (which is asynchronous and returns a Promise).
+ *  */
+const sequelize = new Sequelize("lostandfound", "hazem", "hazem", {
+  host: "mysql",
+  dialect: "mysql",
+  pool: {
+    max: 5,
+    min: 0,
+    acquire: 30000,
+    idle: 10000
+  }
+});
+
+sequelize
+  .authenticate()
+  .then(() => {
+    console.log("Connection has been established successfully.");
+  })
+  .catch(err => {
+    console.error("Unable to connect to the database:", err);
+  });

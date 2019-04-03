@@ -33,12 +33,12 @@
     "express-graphql": "^0.7.1",
     "graphql": "^14.1.1",
     "graphql-tools": "^4.0.4",
-    "knex": "^0.16.3",
     "merge-graphql-schemas": "^1.5.8",
     "mongoose": "^5.4.19",
-    "mysql": "^2.16.0",
+    "mysql2": "^1.6.5",
     "nodemon": "^1.18.10",
-    "pg": "^7.9.0"
+    "sequelize": "^5.2.9",
+    "sequelize-cli": "^5.4.0"
   },
   "devDependencies": {
     "@babel/node": "^7.2.2",
