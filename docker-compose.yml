@@ -21,6 +21,8 @@ services:
         - MYSQL_USER=hazem
         - MYSQL_PASSWORD=hazem
         - MYSQL_ROOT_PASSWORD=hazem
+    volumes:
+      - my-datavolume:/var/lib/mysql
     expose:
       - "3306"
 
@@ -38,3 +40,6 @@ services:
       - mysql
     links:
       - mysql
+
+volumes:
+  my-datavolume:
