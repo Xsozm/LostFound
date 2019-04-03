@@ -1,5 +1,5 @@
 # LostFound
-#Installation 
+# Installation 
 - clone the repo
 - run `docker-compose up`
 - test phpmyadmin on localhost:80
