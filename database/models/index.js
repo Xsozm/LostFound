@@ -12,11 +12,19 @@ let sequelize;
 if (config.use_env_variable) {
   sequelize = new Sequelize(process.env[config.use_env_variable], config);
 } else {
+  const pool = {
+    max: 5,
+    min: 0,
+    acquire: 30000,
+    idle: 10000
+  };
+
   sequelize = new Sequelize(
     config.database,
     config.username,
     config.password,
-    config
+    config,
+    pool
   );
 }
 
@@ -30,8 +38,6 @@ fs.readdirSync(__dirname)
     const model = sequelize["import"](path.join(__dirname, file));
     db[model.name] = model;
   });
-
-console.log("looooooooool");
 
 Object.keys(db).forEach(modelName => {
   if (db[modelName].associate) {

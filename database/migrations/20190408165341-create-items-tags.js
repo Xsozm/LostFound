@@ -1,29 +1,25 @@
 "use strict";
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable("Users", {
+    return queryInterface.createTable("items_tags", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      username: {
-        type: Sequelize.STRING
+      item_id: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: "Items"
+        }
       },
-      email: {
-        type: Sequelize.STRING,
-        unique: true
+      tag_id: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: "Tags"
+        }
       },
-      role: {
-        type: Sequelize.STRING
-      },
-      isBanned: {
-        type: Sequelize.BOOLEAN,
-        defaultValue: false,
-        allowNull: false
-      },
-
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
@@ -35,6 +31,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable("Users");
+    return queryInterface.dropTable("items_tags");
   }
 };

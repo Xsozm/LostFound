@@ -1,12 +1,11 @@
 import { config } from "dotenv";
 import { schema as ourSchema, root } from "./GraphQLSchema";
 import Sequelize from "sequelize";
-
 import express from "express";
 import graphqlHTTP from "express-graphql";
+import Models from "./database/models";
 config();
 const app = express();
-
 const PORT = process.env.PORT || 8080;
 
 app.use(
@@ -40,6 +39,14 @@ const sequelize = new Sequelize("lostandfound", "hazem", "hazem", {
     idle: 10000
   }
 });
+
+Models.User.findAll({ attributes: ["username"] })
+  .then(users => {
+    console.log(users[0].get({ plain: true }).username);
+  })
+  .catch(err => {
+    console.log(err);
+  });
 
 sequelize
   .authenticate()

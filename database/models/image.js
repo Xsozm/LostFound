@@ -1,7 +1,7 @@
 "use strict";
 module.exports = (sequelize, DataTypes) => {
-  const User = sequelize.define(
-    "User",
+  const Image = sequelize.define(
+    "Image",
     {
       id: {
         allowNull: false,
@@ -9,22 +9,18 @@ module.exports = (sequelize, DataTypes) => {
         primaryKey: true,
         type: DataTypes.INTEGER
       },
-      username: {
-        type: DataTypes.STRING
-      },
-      email: {
+      path: {
         type: DataTypes.STRING,
-        unique: true
-      },
-      role: {
-        type: DataTypes.STRING
-      },
-      isBanned: {
-        type: DataTypes.BOOLEAN,
-        defaultValue: false,
         allowNull: false
       },
-
+      item_id: {
+        type: DataTypes.INTEGER,
+        references: {
+          model: "items",
+          key: "id"
+        },
+        allowNull: false
+      },
       createdAt: {
         allowNull: false,
         type: DataTypes.DATE
@@ -36,8 +32,8 @@ module.exports = (sequelize, DataTypes) => {
     },
     {}
   );
-  User.associate = function(models) {
-    User.hasMany(models.Item, { foreignKey: "user_id", sourceKey: "id" });
+  Image.associate = function(models) {
+    Image.belongsTo(models.Item, { foreignKey: "item_id" });
   };
-  return User;
+  return Image;
 };

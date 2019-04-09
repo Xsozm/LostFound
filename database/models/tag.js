@@ -1,7 +1,7 @@
 "use strict";
 module.exports = (sequelize, DataTypes) => {
-  const User = sequelize.define(
-    "User",
+  const Tag = sequelize.define(
+    "Tag",
     {
       id: {
         allowNull: false,
@@ -9,22 +9,10 @@ module.exports = (sequelize, DataTypes) => {
         primaryKey: true,
         type: DataTypes.INTEGER
       },
-      username: {
-        type: DataTypes.STRING
-      },
-      email: {
+      name: {
         type: DataTypes.STRING,
         unique: true
       },
-      role: {
-        type: DataTypes.STRING
-      },
-      isBanned: {
-        type: DataTypes.BOOLEAN,
-        defaultValue: false,
-        allowNull: false
-      },
-
       createdAt: {
         allowNull: false,
         type: DataTypes.DATE
@@ -36,8 +24,12 @@ module.exports = (sequelize, DataTypes) => {
     },
     {}
   );
-  User.associate = function(models) {
-    User.hasMany(models.Item, { foreignKey: "user_id", sourceKey: "id" });
+  Tag.associate = function(models) {
+    Tag.belongsToMany(models.Item, {
+      through: "items_tags",
+      foreignKey: "tag_id",
+      otherKey: "item_id"
+    });
   };
-  return User;
+  return Tag;
 };
