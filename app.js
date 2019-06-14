@@ -40,13 +40,13 @@ const sequelize = new Sequelize("lostandfound", "hazem", "hazem", {
   }
 });
 
-Models.User.findAll({ attributes: ["username"] })
-  .then(users => {
-    console.log(users[0].get({ plain: true }).username);
-  })
-  .catch(err => {
-    console.log(err);
-  });
+// Models.User.findAll({ attributes: ["username"] })
+//   .then(users => {
+//     console.log(users[0].get({ plain: true }).username);
+//   })
+//   .catch(err => {
+//     console.log(err);
+//   });
 
 sequelize
   .authenticate()

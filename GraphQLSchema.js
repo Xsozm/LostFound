@@ -1,6 +1,4 @@
-import {
-    buildSchema,GraphQLObjectType,GraphQLSchema
-} from 'graphql';
+import { buildSchema, GraphQLObjectType, GraphQLSchema } from "graphql";
 
 export const schema = buildSchema(`
   type Query {
@@ -9,5 +7,5 @@ export const schema = buildSchema(`
 `);
 
 export const root = {
-    hello: () => 'Hello world!'
+  hello: () => "Fuck You !"
 };
